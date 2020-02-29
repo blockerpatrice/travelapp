@@ -1,6 +1,6 @@
 //express app
 const express = require('express')
-const cors = require('cors')
+//const cors = require('cors')
 //another middleware meant to handle http requests
 const mongoose = require('mongoose')
 // const morgan = require('morgan')
@@ -12,27 +12,24 @@ const routes = require('./api/Routes')
 
 const app = express()
 
-mongoose.connect("mongodb://localhost/",{
-    useNewUrlParser: true,
+mongoose.connect("mongodb://localhost:27017/",{useNewUrlParser: true})
+.then(()=> console.log("Connected to MongoDB"))
+.catch(err => console.error(err));
 
-})
 //environment variables can affect the way running processes
 //will behave on a computer
 
 // app.use(morgan('common'))
 // app.use(helmet())
-app.use(cors({origin: process.env.CORS_ORIGIN}))
+// app.use(cors({origin: process.env.CORS_ORIGIN}))
 app.use(express.json())
 //body parser
 
-app.get('/',(req,res) =>{
-    res.json({
-        message: 'Hello world'
-    })
-})
+// app.get('/',(req,res) =>{
+//     console.log("working")
+// })
 
 app.use('/api/Routes', routes)
-
 
 app.use((req, res, next) => {
     const error = new Error(`webpage not found`)
