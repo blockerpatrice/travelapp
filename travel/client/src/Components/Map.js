@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import ReactMapGL, {Marker} from 'react-map-gl'
+import ReactMapGL, {Marker, WebMercatorViewport} from 'react-map-gl'
 import MapMarker from './MapMarker'
 import ListOfCities from './ListOfCities'
 import CityEntry from './CityEntry'
 import axios from 'axios'
+import Header from './Header'
+import '../index.css'
 
 const CITIES = [
     {
@@ -26,10 +28,16 @@ const CITIES = [
 const Map = () => {
   const [cities, setCities] = useState([])
 
-  const [logEntries, setLogEntries] = useState([]);
+  
+  useEffect(() => {
+    axios.get('/api/Routes')
+      .then(res => setCities(res.data))
+      .catch(err => console.log(err))
+  },[])
+
   const [viewport, setViewport] = useState({
-    width: '70vw',
-    height: '80vh',
+    width: '500px',
+    height: '500px',
     latitude: 43.6150,
     longitude: -116.2023,
     zoom: 2
@@ -38,6 +46,11 @@ const Map = () => {
 
   return (
     <div>
+      
+      <Header/>
+
+      <div className="wrapper">
+    <p className="intro">Heading</p>  
     <ReactMapGL
       {...viewport}
       mapStyle="mapbox://styles/blockerbella/ck759dbd108ff1ip577hjsqqm"
@@ -48,13 +61,12 @@ const Map = () => {
         <MapMarker data={CITIES}/>
     }
     </ReactMapGL>
-    <ListOfCities/>
+    {cities.map(city => <ListOfCities {...city} key={city.title}/>)}
     <CityEntry/>
+    </div>
     </div>
   );
 }
-
-
 
 
 export default Map;

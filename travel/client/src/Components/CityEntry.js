@@ -16,13 +16,7 @@ class CityEntry extends React.Component {
     
       handleSubmit(event) {
         alert('A name was submitted: ' + this.state.value);
-        axios.get('/api/Routes')
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+        
         event.preventDefault();
       }
     

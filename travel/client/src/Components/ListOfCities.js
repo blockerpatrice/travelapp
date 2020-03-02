@@ -1,21 +1,12 @@
-import React, {useState, useEffect} from 'react'
-import axios from 'axios'
-
+import React from 'react'
+import '../index.css'
 
 const ListOfCities = (props) => {
 
-  const [cities, setCities] = useState ([])  
-
-  useEffect(() => {
-    axios.get("/api/Routes")
-     .then(res => setCities (res.data))
-     .catch(err => console.log(err))
-})
-        return(
-            <div>
-            
-            </div>
-        )
+    return(
+      <div className="city-names">{props.title}</div>
+    )
+  
 }
 
 export default ListOfCities
