@@ -1,13 +1,22 @@
-import React, {Component} from 'react'
+import React, {useState, useEffect} from 'react'
+import axios from 'axios'
 
-class ListOfCities extends Component {
-    render() {
+
+const ListOfCities = (props) => {
+
+  const [cities, setCities] = useState ([])  
+
+  useEffect(() => {
+    axios.get("/api/Routes")
+     .then(res => setCities (res.data))
+     .catch(err => console.log(err))
+})
         return(
             <div>
-                List of cities placeholder
+            
             </div>
         )
-    }
 }
 
-export default ListOfCities;
+export default ListOfCities
+

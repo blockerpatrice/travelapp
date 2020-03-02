@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import ReactMapGL, {Marker} from 'react-map-gl'
 import MapMarker from './MapMarker'
 import ListOfCities from './ListOfCities'
+import CityEntry from './CityEntry'
+import axios from 'axios'
 
 const CITIES = [
     {
@@ -22,6 +24,8 @@ const CITIES = [
 ]
 
 const Map = () => {
+  const [cities, setCities] = useState([])
+
   const [logEntries, setLogEntries] = useState([]);
   const [viewport, setViewport] = useState({
     width: '70vw',
@@ -44,8 +48,8 @@ const Map = () => {
         <MapMarker data={CITIES}/>
     }
     </ReactMapGL>
-
     <ListOfCities/>
+    <CityEntry/>
     </div>
   );
 }

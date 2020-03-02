@@ -3,7 +3,7 @@ const express = require('express')
 //const cors = require('cors')
 //another middleware meant to handle http requests
 const mongoose = require('mongoose')
-// const morgan = require('morgan')
+const morgan = require('morgan')
 // const helmet = require('helmet')
 
 require('dotenv').config()
@@ -19,10 +19,10 @@ mongoose.connect("mongodb://localhost:27017/",{useNewUrlParser: true})
 //environment variables can affect the way running processes
 //will behave on a computer
 
-// app.use(morgan('common'))
+app.use(morgan('common'))
 // app.use(helmet())
-// app.use(cors({origin: process.env.CORS_ORIGIN}))
-app.use(express.json())
+//app.use(cors({origin: process.env.CORS_ORIGIN}))
+//app.use(express.json())
 //body parser
 
 // app.get('/',(req,res) =>{
