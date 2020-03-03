@@ -24,7 +24,7 @@ cityRouter.post("/", (req,res,next) =>{
 })
 
 cityRouter.delete("/:cityId", (req,res,next)=> {
-    
+
 })
 
 //cityRouter.get()
