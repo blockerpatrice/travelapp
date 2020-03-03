@@ -4,7 +4,7 @@ import '../index.css'
 const ListOfCities = (props) => {
 
     return(
-      <div className="city-names">{props.title}</div>
+      <div>{props.title}</div>
     )
   
 }

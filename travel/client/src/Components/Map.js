@@ -7,6 +7,7 @@ import axios from 'axios'
 import Header from './Header'
 import '../index.css'
 
+
 const CITIES = [
     {
         key:"New York",
@@ -28,41 +29,53 @@ const CITIES = [
 const Map = () => {
   const [cities, setCities] = useState([])
 
-  
+  const getCities = () => {
+      axios.get('/cities')
+        .then(res => setCities(res.data))
+        .catch(err => console.log(err))
+  }
+
   useEffect(() => {
-    axios.get('/api/Routes')
-      .then(res => setCities(res.data))
-      .catch(err => console.log(err))
+   getCities()
   },[])
 
   const [viewport, setViewport] = useState({
-    width: '500px',
+    width: '100%',
     height: '500px',
     latitude: 43.6150,
     longitude: -116.2023,
     zoom: 2
   });
 
-
   return (
     <div>
       
       <Header/>
 
-      <div className="wrapper">
-    <p className="intro">Heading</p>  
-    <ReactMapGL
-      {...viewport}
-      mapStyle="mapbox://styles/blockerbella/ck759dbd108ff1ip577hjsqqm"
-      mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-      onViewportChange={setViewport}>
+    <div className="wrapper">
 
-    {
-        <MapMarker data={CITIES}/>
-    }
-    </ReactMapGL>
-    {cities.map(city => <ListOfCities {...city} key={city.title}/>)}
-    <CityEntry/>
+    <div className="map-styles">
+      <ReactMapGL
+        {...viewport}
+        mapStyle="mapbox://styles/blockerbella/ck759dbd108ff1ip577hjsqqm"
+        mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+        onViewportChange={setViewport}>
+
+      {
+          <MapMarker data={CITIES}/>
+      }
+      </ReactMapGL>
+      </div>
+    <div className="city-names">
+      <a>Places Traveled</a>
+      <p> </p>
+      {cities.map(city => <ListOfCities {...city} key={city.title}/>)}
+    </div>
+
+    <div className="form-entry">
+      <CityEntry/>
+    </div>
+    
     </div>
     </div>
   );

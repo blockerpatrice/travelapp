@@ -1,49 +1,34 @@
-//express app
 const express = require('express')
-//const cors = require('cors')
-//another middleware meant to handle http requests
 const mongoose = require('mongoose')
 const morgan = require('morgan')
-// const helmet = require('helmet')
+const app = express()
+
 
 require('dotenv').config()
 
-const routes = require('./api/Routes')
+app.use(express.json())
+app.use(morgan('dev'))
 
-const app = express()
+// mongoose.connect("mongodb://localhost:27017/travels",{useNewUrlParser: true})
+// .then(()=> console.log("Connected to MongoDB"))
+// .catch(err => console.error(err));
 
-mongoose.connect("mongodb://localhost:27017/",{useNewUrlParser: true})
-.then(()=> console.log("Connected to MongoDB"))
-.catch(err => console.error(err));
+mongoose.connect("mongodb://localhost:27017/travels",
+{
+    useNewUrlParser:true,
+    useUnifiedTopology:true,
+    useCreateIndex:true,
+    useFindAndModify:false
+},
+() => console.log("Connected to Mongo")
+)
 
-//environment variables can affect the way running processes
-//will behave on a computer
+app.use("/cities", require("./routes/cityRouter.js"))
 
-app.use(morgan('common'))
-// app.use(helmet())
-//app.use(cors({origin: process.env.CORS_ORIGIN}))
-//app.use(express.json())
-//body parser
-
-// app.get('/',(req,res) =>{
-//     console.log("working")
-// })
-
-app.use('/api/Routes', routes)
-
-app.use((req, res, next) => {
-    const error = new Error(`webpage not found`)
-    res.status(404)
-    next(error)
-})
-
-app.use((error, req, res, next) =>{
-    const statusCode = res.statusCode === 200 ? 500 : res.statusCode
-    res.status(statusCode)
-    res.json({
-        message: error.message, 
-        
-    })
+//error handler
+app.use((err,req,res,next) => {
+    console.log(err)
+    return res.send({errMsg: err.message})
 })
 
 const port = 1396

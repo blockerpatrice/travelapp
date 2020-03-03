@@ -7,8 +7,8 @@ const requiredNumber = {
   required: true,
 };
 
-const logEntrySchema = new Schema({
-  title: {
+const CitySchema = new Schema({
+  city: {
     type: String,
     required: true,
   },
@@ -31,14 +31,13 @@ const logEntrySchema = new Schema({
     min: -180,
     max: 180,
   },
-  visitDate: {
-    required: true,
-    type: Date,
-  },
+  // visitDate: {
+  //   required: true,
+  //   type: Date,
+  // },
 }, {
   timestamps: true,
 });
 
-const LogEntry = mongoose.model('LogEntry', logEntrySchema);
 
-module.exports = LogEntry;
+module.exports = mongoose.model("City", CitySchema);
