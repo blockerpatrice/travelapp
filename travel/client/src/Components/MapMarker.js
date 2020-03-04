@@ -1,7 +1,9 @@
 import React, {PureComponent} from 'react';
 import {Marker} from 'react-map-gl';
 
+
 class MapMarker extends PureComponent {
+  
     render() {
       const {data} = this.props;
       return data.map(

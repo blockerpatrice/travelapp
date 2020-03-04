@@ -24,7 +24,13 @@ cityRouter.post("/", (req,res,next) =>{
 })
 
 cityRouter.delete("/:cityId", (req,res,next)=> {
-
+    City.findOneAndDelete({_id: req.params.cityId}, (err, deletedItem) => {
+        if(err){
+            res.status(500)
+            return next(err)
+        }
+        return res.status(200).send(`Successfully deleted item ${deletedItem.city}`)
+    })
 })
 
 //cityRouter.get()
