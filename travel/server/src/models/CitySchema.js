@@ -13,10 +13,10 @@ const CitySchema = new Schema({
     type: String
   },
   latitude: {
-    type:String
+    type:Number
   },
   longitude: {
-    type:String
+    type:Number
   },
 }, {
   timestamps: true,

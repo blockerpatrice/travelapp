@@ -3,9 +3,11 @@ import {Marker} from 'react-map-gl';
 
 
 class MapMarker extends PureComponent {
-  
+
     render() {
+      
       const {data} = this.props;
+      console.log(data)
       return data.map(
         city => <Marker key={city.name} longitude={city.longitude} latitude={city.latitude}>
             <svg 
@@ -22,7 +24,9 @@ class MapMarker extends PureComponent {
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                 <circle cx="12" cy="10" r="3"></circle>
             </svg>
+            
         </Marker>
+        
       )
     }
   }

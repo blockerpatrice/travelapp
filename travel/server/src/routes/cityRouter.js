@@ -29,7 +29,7 @@ cityRouter.delete("/:cityId", (req,res,next)=> {
             res.status(500)
             return next(err)
         }
-        return res.status(200).send(`Successfully deleted item ${deletedItem.city}`)
+        return res.status(200).send(`Successfully deleted item ${deletedItem.name}`)
     })
 })
 

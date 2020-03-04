@@ -4,7 +4,7 @@ import '../index.css'
 
 
 const CityEntry = (props) => {
-    const initInputs ={name:"", rating:"", comments:"", longitude:"", latitude:""}
+    const initInputs ={name:"", rating:"", comments:"", longitude:Number, latitude:Number, image:""}
     const [inputs, setInputs] = useState(initInputs)
     
     const handleChange = (e) =>{
@@ -16,40 +16,31 @@ const CityEntry = (props) => {
     const handleSubmit = (e) => {
       e.preventDefault()
       props.addCity(inputs)
-      props.addMarkers(inputs)
+      
       setInputs(initInputs)
     }
 
+
         return (
-          <div className="field">
+          <div>
           <form onSubmit={handleSubmit}>
-            <label>
-              Enter a new city:
-              <input type="text" name="name" value={inputs.name} onChange={handleChange} />
-            </label> <br/>
+            <input type="text" placeholder="Enter a City" name="name" value={inputs.name} onChange={handleChange} />
+            <p></p>
+            <input type="text" placeholder="Enter a Rating, 1-10" name="rating" value={inputs.rating} onChange={handleChange} />
             
-            <label>
-              Enter Rating, 1-10:
-              <input type="text" name="rating" value={inputs.rating} onChange={handleChange} />
-            </label> <br/>
-
-            <label>
-              Comments about the city?:
-              <input type="text" name="comments" value={inputs.comments} onChange={handleChange} />
-            </label> <br/>
-        
-            <label>
-              Enter longitude:
-              <input type="text" name="longitude" value={inputs.longitude} onChange={handleChange} />
-            </label> <br/>
-
-            <label>
-              Enter latitude
-              <input type="text" name="latitude" value={inputs.latitude} onChange={handleChange} />
-            </label> <br/>
-          
-            <input type="submit" value="Submit" />
+            <p></p>
+            <input type="text" placeholder="Comments about the city?" name="comments" value={inputs.comments} onChange={handleChange} />
+            <p></p>
+            <input type="text" placeholder="Image link" name="image" value={inputs.image} onChange={handleChange} />
+            <p></p>          
+            <input type="number" step="0.0001" placeholder="Latitude" name="latitude" value={inputs.latitude} onChange={handleChange} />
+            <p></p>
+            <input type="number" step="0.0001" placeholder = "Longitude" name="longitude" value={inputs.longitude} onChange={handleChange} />
+            <p></p>
+            <button className="button-style">Submit</button>
+            
           </form>
+          
           
           </div>
         );

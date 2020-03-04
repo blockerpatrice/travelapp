@@ -9,27 +9,8 @@ import '../index.css'
 
 
 const Home = () => {
-    
 
-    const arrayOfCities = [
-        {
-            key:"New York",
-            latitude: 40.748817,
-            longitude: -73.985428
-        },
-        {
-            key:"Tampa",
-            latitude: 27.9506,
-            longitude: -82.4572
-        },
-        {
-            key:"Boise",
-            latitude: 43.6150,
-            longitude: -116.2023
-        }
-      ]
-
-  const [cities, setCities] = useState([])
+  const [cities, setCities] = useState([]);
 
   const getCities = () => {
       axios.get('/cities')
@@ -44,58 +25,60 @@ const Home = () => {
     .catch(err => console.log(err))
   }
 
-  const addMarkers = (markers) => {
-    const parseLong = parseInt(markers.longitude)
-    const parseLat = parseInt(markers.latitude)
-
-    const addedCity = {
-      key:markers.name,
-      latitude:parseLat,
-      longitude:parseLong
-    }
-
-    arrayOfCities.push(addedCity)
+  const deleteCity = (cityId) =>{
+    axios.delete(`/cities/${cityId}`)
+    .then(res => {setCities(prevCities => prevCities.filter(city => city._id !== cityId))})
+    .catch(err => console.log(err))
   }
 
+
+
+  
+
+  console.log(cities)
+
   const [viewport, setViewport] = useState({
-    width: '100%',
-    height: '550px',
+    width: '99%',
+    height: '450px',
     latitude: 43.6150,
     longitude: -116.2023,
-    zoom: 2
+    zoom: 3
   });
 
   useEffect(() => {
     getCities()
    },[])
+
+  
  
 
    return (
     <div>
       <Header/>
-    <div className="wrapper">
+    
 
     <div className="map-styles">
       <ReactMapGL
         {...viewport}
         mapStyle="mapbox://styles/blockerbella/ck759dbd108ff1ip577hjsqqm"
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-        onViewportChange={setViewport}>
+        onViewportChange ={setViewport}
+        >
       {
-        <MapMarker data={arrayOfCities} />
+        <MapMarker data={cities} />
       }
       </ReactMapGL>
     </div>  
-    <div className="city-names">
-      <a>Places Traveled</a>
-      <p> </p>
-      {cities.map(cityName => <ListOfCities {...cityName} key={cityName.city}/>)}
-    </div>
 
-    <div className="form-entry">
-      <CityEntry addCity={addCity} addMarkers={addMarkers}/>
+    <div className="wrapper">
+    <div className="city-names">
+      
+      <p> </p>
+      {cities.map(cityName => <ListOfCities {...cityName} key={cityName.city} deleteCity={deleteCity}/>)}
     </div>
-    
+    <div className="form-entry">
+      <CityEntry addCity={addCity} />
+    </div>
     </div>
       </div>
     
