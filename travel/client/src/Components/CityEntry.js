@@ -22,7 +22,7 @@ const CityEntry = (props) => {
 
 
         return (
-          <div>
+          <div className="form-styles">
           <form onSubmit={handleSubmit}>
             <input type="text" placeholder="Enter a City" name="name" value={inputs.name} onChange={handleChange} />
             <p></p>
@@ -37,8 +37,9 @@ const CityEntry = (props) => {
             <p></p>
             <input type="number" step="0.0001" placeholder = "Longitude" name="longitude" value={inputs.longitude} onChange={handleChange} />
             <p></p>
-            <button className="button-style">Submit</button>
-            
+            <div className="align-submit-bttn">
+              <button className="button-style">Submit</button>
+            </div>
           </form>
           
           

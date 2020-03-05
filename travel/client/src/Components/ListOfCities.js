@@ -8,16 +8,19 @@ const ListOfCities = (props) => {
     return(
         <div className="city-styles">
           
+          <div className="image-wrapper">
+            <div className ="content-div">
           <img src={props.image} className="images"/>
-          <p className="city">{props.name}, Rating: {props.rating}</p>
-          
-          <p className="comments">Comments: {props.comments}</p>
-          
-          
-          <button 
-            className="button-style" 
-            onClick={() => props.deleteCity(_id)}>Delete</button>
-          
+            <p className="city">{props.name}, Rating: {props.rating}</p>
+            <p className="comments">Comments: {props.comments} 
+              
+            <button 
+              className="button-delete" 
+              onClick={() => props.deleteCity(_id)}>Delete</button>
+            </p>
+            </div>
+          </div>
+        
         </div>  
 
     )

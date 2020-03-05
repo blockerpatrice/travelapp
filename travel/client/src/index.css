@@ -1,6 +1,5 @@
 * {
   box-sizing: border-box;
-  
 }
 
 body {
@@ -8,8 +7,6 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-  
-  background-color:#081217
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -29,7 +26,6 @@ input[type=number] {
   overflow: hidden;
   background-color: #081217;
   padding: 20px 10px;
-  
 }
 
 /* Style the header links */
@@ -48,6 +44,7 @@ input[type=number] {
 .header a.logo {
   font-size: 25px;
   font-weight: bold;
+  color:#f0f0f0;
 }
 
 /* Change the background color on mouse-over */
@@ -69,85 +66,82 @@ input[type=number] {
   color: black;
 }
 
-.city-names{
-  font-size: 15px;
-  font-weight: bold;
-  color:white;
-  flex:60%;
-  text-align: center;
- 
+.wrapper {
+  height: 852px;;
+  width: 300px;
+  width: 16vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0);
 }
-.city{
-  margin:0;
+/* .form-styles{
+  padding-top: 100%;
+} */
+.parent-wrapper{
+  position: relative;
 }
+.image-wrapper{
+  position: relative;
+}
+/* Side navigation links */
+.sidenav a {
+  color: white;
+  padding: 16px;
+  text-decoration: none;
+  display: block;
+}
+
 .city-styles{
-  font-size: 20px;
-  flex-wrap: wrap;
+  width: 98px;
+  color:#f0f0f0;
+  padding:5px;
 }
-
 .images{
-  height:50px;
-  width:100px;
-  margin:0;
- 
+  width:100%;
+  height: 80px;
+  border-radius:10px;
 }
-.form-entry{
-  color:white;
-  width: 30%;
-  display: inline-block;
-  flex:40%;
-}
-
 input[type=text], input[type=number], select {
   width: 100%;
-  padding: 12px 20px;
-  margin: 2px 0;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
-  text-align: center;
 }
-
-.comments {
-  font-size:15px;
+.city{
+  width:100%;
   margin:0;
 }
+.comments{
+  width:100%;
+  font-size: 12px;
+}
 .button-style{
-  display: block;
-  margin: 0 auto;
-  
+  border-radius: 4px;
 }
-.wrapper{
+.align-submit-bttn{
+  text-align: center;
+}
+/* Change color on hover */
+.sidenav a:hover {
+  background-color: #ddd;
+  color:rebeccapurple;
+}
+
+.button-delete{
+  width:50px;
+  font-size: 10px;
+  margin-left:7px;
+  border-radius:4px;
+}
+.city-flex{
   display:flex;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
+  height:535px;
 }
-
-.map-styles{
-  
-  padding-bottom: 20px;
-}
-
-/* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
-@media screen and (max-width: 500px) {
-  .header a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-  .header-right {
-    float: none;
-  }
-}
-
-@media screen and (max-width:1707px){
- 
- .form-entry{
-  color:white;
-  padding-right:30%;
-  padding-left:30%;
-  display: inline-block;
-  
-}
-  
-}
+/* Style the content */
+/* .map-styles {
+  margin-left: 200px;
+  padding-left: 20px;
+} */

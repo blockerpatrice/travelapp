@@ -32,14 +32,11 @@ const Home = () => {
   }
 
 
-
-  
-
   console.log(cities)
 
   const [viewport, setViewport] = useState({
-    width: '99%',
-    height: '450px',
+    width: '100vw',
+    height: '100vh',
     latitude: 43.6150,
     longitude: -116.2023,
     zoom: 3
@@ -49,12 +46,10 @@ const Home = () => {
     getCities()
    },[])
 
-  
- 
 
    return (
-    <div>
-      <Header/>
+    <div className="parent-wrapper">
+      {/* <Header/> */}
     
 
     <div className="map-styles">
@@ -71,16 +66,17 @@ const Home = () => {
     </div>  
 
     <div className="wrapper">
-    <div className="city-names">
-      
-      <p> </p>
-      {cities.map(cityName => <ListOfCities {...cityName} key={cityName.city} deleteCity={deleteCity}/>)}
+        <p> </p>
+        <div className="city-flex">
+          {cities.map(cityName => <ListOfCities {...cityName} key={cityName.city} deleteCity={deleteCity}/>)}
+        </div>
+        
+        <CityEntry addCity={addCity} />
+        
+     
     </div>
-    <div className="form-entry">
-      <CityEntry addCity={addCity} />
+    
     </div>
-    </div>
-      </div>
     
   );
 }
