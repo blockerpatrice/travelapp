@@ -7,11 +7,11 @@ The travel log is a full stack application that uses the MERN stack, along with 
 
 # Technologies used
 
-###### Javascript 
-**React.js
-**Node.js 
-**Express.js 
-**MongoDB
+* Javascript 
+* React.js
+* Node.js 
+* Express.js 
+* MongoDB
 
 # Profile / Resume
 patriceblocker.surge.sh
