@@ -4,11 +4,7 @@ Repo contains personal completed projects along with project currently being wor
 
 # Technologies used
 
-Javascript
-React.js
-Node.js
-Express.js
-MongoDB
+Javascript, React.js, Node.js, Express.js, MongoDB
 
 # Profile / Resume
 patriceblocker.surge.sh
