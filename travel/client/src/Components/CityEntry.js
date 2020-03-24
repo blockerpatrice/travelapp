@@ -26,9 +26,7 @@ const CityEntry = (props) => {
           <form onSubmit={handleSubmit}>
             <input type="text" placeholder="Enter a City" name="name" value={inputs.name} onChange={handleChange} />
             <p></p>
-            <input type="text" placeholder="Enter a Rating, 1-10" name="rating" value={inputs.rating} onChange={handleChange} />
-            
-            <p></p>
+          
             <input type="text" placeholder="Comments about the city?" name="comments" value={inputs.comments} onChange={handleChange} />
             <p></p>
             <input type="text" placeholder="Image link" name="image" value={inputs.image} onChange={handleChange} />
