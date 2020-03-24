@@ -23,13 +23,13 @@ class MyNavbar extends Component {
                         <div>
                             <Link to="/" className="logo">Picture App</Link>
                         </div>
-                        <div>
+                        {/* <div>
                             <Link to="/signup" className="nav-link">Sign Up</Link>
                         </div>
 
                         <div>
                             <Link to="/login" className="nav-link">Log In</Link>
-                        </div>
+                        </div> */}
 
                     </React.Fragment>
                 :
