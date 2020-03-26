@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Home.css';
 import HomeSearchBar from '../search/HomeSearchBar.js';
-import HomePreview from '../homepage/HomePreview.js'
+import HomePreview from './HomePreview.js'
 
 class Home extends Component {
    
