@@ -44,10 +44,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:2080",
-  "description": "My final project is a web application where you can login, download and save photos using the unsplash API. It is a full stack application that uses MongoDB, Express.js, React.js and Node.js.",
-  "main": "server.js",
-  "devDependencies": {},
-  "author": "",
-  "license": "ISC"
+  "proxy": "http://localhost:2080"
 }

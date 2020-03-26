@@ -23,8 +23,9 @@ class HomeSearchBar extends Component {
     }
 
     handleSubmit = (event) => {
-       event.preventDefault();
-       
+        event.preventDefault();
+        // this.props.setSearchWordProp(this.state.search)
+        //     .then(() => this.props.history.push("/search"));
     }
 
     render() { 
@@ -43,7 +44,6 @@ class HomeSearchBar extends Component {
                         </div>
                     </div>
                 </form>
-                <div className="note">You must click "Search"</div>
             </div>
   
         );
