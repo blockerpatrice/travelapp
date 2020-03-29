@@ -4,26 +4,21 @@ const morgan = require('morgan')
 const app = express()
 require('dotenv').config()
 
-const port = 1396;
+const port = process.env.PORT || 5002;
 app.use(express.json())
 app.use(morgan('dev'))
 
 
-// // ... other imports 
-// const path = require("path")
+// ... other imports 
+const path = require("path")
 
-// // ... other app.use middleware 
-// app.use(express.static(path.join(__dirname, "client", "build")))
-
-// app.get("*", (req, res) => {
-//     res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-// });
+// ... other app.use middleware 
+app.use(express.static(path.join(__dirname, "client", "build")))
 
 
-
-// mongoose.connect("mongodb://localhost:27017/travels",{useNewUrlParser: true})
-// .then(()=> console.log("Connected to MongoDB"))
-// .catch(err => console.error(err));
+mongoose.connect("mongodb://localhost:27017/travels",{useNewUrlParser: true})
+.then(()=> console.log("Connected to MongoDB"))
+.catch(err => console.error(err));
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/travels",
 {
@@ -42,6 +37,11 @@ app.use((err,req,res,next) => {
     console.log(err)
     return res.send({errMsg: err.message})
 })
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
+
 
 app.listen(port , () => {
     console.log(`Listening`)
