@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import ReactMapGL, {Marker,Popup} from 'react-map-gl'
 import CityEntry from './CityEntry'
 import axios from 'axios'
+import Header from './Header.js'
 
 import '../index.css'
 
@@ -47,7 +48,7 @@ const Home = () => {
 
    return (
     <div className="parent-wrapper">
-      {/* <Header/> */}
+      <Header/>
     
 
     <div className="map-styles">
@@ -72,7 +73,8 @@ const Home = () => {
                   [entry._id]: true,
                 })}
               >
-              <svg 
+              ✈️
+              {/* <svg 
                 xmlns="http://www.w3.org/2000/svg" 
                 width="16" 
                 height="16" 
@@ -85,7 +87,7 @@ const Home = () => {
                 className="feather feather-map-pin">
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                 <circle cx="12" cy="10" r="3"></circle>
-            </svg>
+            </svg> */}
               </div>
             </Marker>
             {
@@ -120,21 +122,12 @@ const Home = () => {
       </ReactMapGL>
     </div>  
 {/* 
-    <div className="wrapper">
-        <p> </p>
-        <div className="city-flex">
-          {cities.map(cityName => <ListOfCities {...cityName} key={cityName.city} deleteCity={deleteCity}/>)}
-        </div>
-        
-        
-    </div> */}
-
     <div className="wrapper-form">
       <CityEntry addCity={addCity} />
-    </div>
-    </div>
+    </div> */}
 
-    
+
+    </div>
     
   );
 }

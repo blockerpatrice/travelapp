@@ -25,12 +25,11 @@ input[type=number] {
 .header {
   overflow: hidden;
   background-color: #081217;
-  padding: 20px 10px;
 }
 
 /* Style the header links */
 .header a {
-  float: left;
+  margin:3px;
   color: #f0f0f0;
   text-align: center;
   padding: 12px;
@@ -47,22 +46,25 @@ input[type=number] {
   color:#f0f0f0;
 }
 
-/* Change the background color on mouse-over */
+.logo{
+  font-size: 25px;
+  font-weight: bold;
+  color:#f0f0f0;
+  padding-top: 10px;
+  padding-left:15px;
+  width:500px;
+}
 
-/* Style the active/current link*/
-.header a.active {
+.popup-styles{
   background-color:#202d3f;
   color: white;
+  border-radius: 5px;
+  margin-right:5px;
 }
 
-/* Float the link section to the right */
 .header-right {
   float: right;
-}
-
-.header-right a:hover{
-  background-color: #ddd;
-  color: black;
+  width:500px;
 }
 
 .wrapper {
@@ -81,24 +83,13 @@ input[type=number] {
   background-color: rgba(255, 255, 255, 0);
 }
 .form-styles{
-  position: fixed;
-  bottom:0;
-  right:0;
-  padding-bottom:30px;
+  width:300px;
+  padding-top:50px;
 }
-.parent-wrapper{
-  position: relative;
-}
+
 .image-wrapper{
   position: relative;
   height:200px;
-}
-/* Side navigation links */
-.sidenav a {
-  color: white;
-  padding: 16px;
-  text-decoration: none;
-  display: block;
 }
 
 .city-styles{
@@ -106,7 +97,6 @@ input[type=number] {
   color:#f0f0f0;
   padding:5px;
 }
-
 
 .images{
   width:80px;
@@ -150,12 +140,34 @@ input[type=text], input[type=number], select {
 } 
 .img{
   height:100px;
+  width:150px;
 }
 
-@media only screen and (max-width:1838px) {
+.about-project{
+  font-size: 15px;
+  color:#f0f0f0;
+  background-color: #202d3f;
+  border-radius: 5px;
+  margin-top:10px;
+  width:300px;
+  text-align: justify;
+  padding:10px;
+}
+
+@media only screen and (max-width:810px) {
   .city-styles{
     width: 98px;
     color:#f0f0f0;
     padding:5px;
   }
+
+  .header{
+    align-items: center;
+  }
+
+  .logo{
+    align-items: center;
+  }
+
+  
 }

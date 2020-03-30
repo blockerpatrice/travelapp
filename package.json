@@ -19,6 +19,8 @@
     "helmet": "^3.21.3",
     "mongoose": "^5.9.6",
     "morgan": "^1.10.0",
+    "react-bootstrap": "^1.0.0",
+    "semantic-ui-react": "^0.88.2",
     "uuid": "^7.0.1"
   },
   "devDependencies": {
@@ -26,7 +28,6 @@
     "nodemon": "^2.0.2"
   },
   "engines": {
-    "node":"10.15.2"
+    "node": "10.15.2"
   }
 }
-
