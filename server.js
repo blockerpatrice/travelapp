@@ -8,12 +8,12 @@ const port = process.env.PORT || 5002;
 app.use(express.json())
 app.use(morgan('dev'))
 
-
+app.use("/cities", require("./routes/cityRouter.js"))
 // ... other imports 
-const path = require("path")
+// const path = require("path")
 
-// ... other app.use middleware 
-app.use(express.static(path.join(__dirname, "client", "build")))
+// // ... other app.use middleware 
+// app.use(express.static(path.join(__dirname, "client", "build")))
 
 
 mongoose.connect("mongodb://localhost:27017/travels",{useNewUrlParser: true})
@@ -30,7 +30,6 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/travels",
 () => console.log("Connected to Mongo")
 )
 
-app.use("/cities", require("./routes/cityRouter.js"))
 
 //error handler
 app.use((err,req,res,next) => {
@@ -38,9 +37,9 @@ app.use((err,req,res,next) => {
     return res.send({errMsg: err.message})
 })
 
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-});
+// app.get("*", (req, res) => {
+//     res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+// });
 
 
 app.listen(port , () => {
