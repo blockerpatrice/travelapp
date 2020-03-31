@@ -155,11 +155,15 @@ input[type=text], input[type=number], select {
   position: absolute;
 }
 .popup{
-  height:190px;
+  height:100%;
+  width:190px;
 } 
+.popup-text{
+  text-align: justify;
+}
 .img{
   height:100px;
-  width:150px;
+  width:100%;
 }
 
 .about-project{

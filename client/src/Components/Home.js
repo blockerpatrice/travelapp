@@ -105,8 +105,8 @@ const Home = () => {
                   onClose={() => setShowPopup({})}
                   anchor="top" >
                   <div className="popup">
-                    <h3>{entry.name}</h3>
-                    <p>{entry.comments}</p>
+                    <h3 className="popup-text">{entry.name}</h3>
+                    <p className="popup-text">{entry.comments}</p>
                     
                     {entry.image && <img src={entry.image} alt={entry.title} className="img"/>}
                   </div>
