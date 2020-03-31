@@ -3,17 +3,8 @@ import React, {useState} from 'react'
 import CityEntry from './CityEntry.js'
 import AboutProject from './AboutProject.js'
 import { Button, Popup } from 'semantic-ui-react'
-import axios from 'axios'
 
 const Header = (props) => {
-
-    // const [cities, setCities] = useState([]);
-
-    // const addCity = (newCity) => {
-    //     axios.post('/cities', newCity)
-    //     .then(res => {setCities(prevCities => [...prevCities, res.data])})
-    //     .catch(err => console.log(err))
-    // }
 
 
     return(
@@ -37,7 +28,7 @@ const Header = (props) => {
                         content={<CityEntry addCity={props.addCity}/>}
                         on='click'
                         pinned ='false'
-                        position='bottom center'
+                        position='bottom left'
                         size='huge'
                         trigger={<Button className="popup-styles-addcity">New City</Button>}
                     />    
