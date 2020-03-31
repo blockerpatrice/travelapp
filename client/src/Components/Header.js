@@ -5,15 +5,15 @@ import AboutProject from './AboutProject.js'
 import { Button, Popup } from 'semantic-ui-react'
 import axios from 'axios'
 
-const Header = () => {
+const Header = (props) => {
 
-    const [cities, setCities] = useState([]);
+    // const [cities, setCities] = useState([]);
 
-    const addCity = (newCity) =>{
-        axios.post('/cities', newCity)
-        .then(res => {setCities(prevCities => [...prevCities, res.data])})
-        .catch(err => console.log(err))
-      }
+    // const addCity = (newCity) => {
+    //     axios.post('/cities', newCity)
+    //     .then(res => {setCities(prevCities => [...prevCities, res.data])})
+    //     .catch(err => console.log(err))
+    // }
 
 
     return(
@@ -34,7 +34,7 @@ const Header = () => {
 
                 <div className="add-city-button">
                     <Popup
-                        content={<CityEntry addCity={addCity}/>}
+                        content={<CityEntry addCity={props.addCity}/>}
                         on='click'
                         pinned ='false'
                         position='bottom center'

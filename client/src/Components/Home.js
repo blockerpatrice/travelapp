@@ -48,7 +48,7 @@ const Home = () => {
 
    return (
     <div className="parent-wrapper">
-      <Header/>
+      <Header addCity={addCity}/>
     
 
     <div className="map-styles">
