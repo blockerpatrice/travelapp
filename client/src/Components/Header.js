@@ -18,27 +18,30 @@ const Header = () => {
 
     return(
     <div className="header">
-        <div className="logo">Patty's Travel Log </div>
+        <div className="logo"> <p>Patty's Travel Log </p></div>
         
         <div className="header-right">
-            
-                <Popup
-                    content={<AboutProject/>}
-                    on='click'
-                    pinned ='false'
-                    position='bottom center'
-                    size='small'
-                    trigger={<Button className="popup-styles">About Project</Button>}
-                />   
-            
-                <Popup
-                    content={<CityEntry addCity={addCity}/>}
-                    on='click'
-                    pinned ='false'
-                    position='bottom center'
-                    size='huge'
-                    trigger={<Button className="popup-styles">New City</Button>}
-                />    
+                <div className="about-button">
+                    <Popup
+                        content={<AboutProject/>}
+                        on='click'
+                        pinned ='false'
+                        position='bottom center'
+                        size='small'
+                        trigger={<Button className="popup-styles-about">About Project</Button>}
+                    />   
+                </div>
+
+                <div className="add-city-button">
+                    <Popup
+                        content={<CityEntry addCity={addCity}/>}
+                        on='click'
+                        pinned ='false'
+                        position='bottom center'
+                        size='huge'
+                        trigger={<Button className="popup-styles-addcity">New City</Button>}
+                    />    
+                </div>
             
         </div>
         

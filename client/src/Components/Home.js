@@ -73,7 +73,9 @@ const Home = () => {
                   [entry._id]: true,
                 })}
               >
-              ✈️
+ 
+              
+              <img src="https://img.icons8.com/plasticine/100/000000/airplane-landing.png" height='25px' width='25px'/>
               {/* <svg 
                 xmlns="http://www.w3.org/2000/svg" 
                 width="16" 
