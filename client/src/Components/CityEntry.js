@@ -29,9 +29,9 @@ const CityEntry = (props) => {
             <p></p>
             <input type="text" autoComplete="off" placeholder="Image link" name="image" value={inputs.image} onChange={handleChange} />
             <p></p>          
-            <input type="number" step="0.0001" placeholder="Latitude" name="latitude" value={inputs.latitude} onChange={handleChange} />
+            <input type="number" step="0.0001" placeholder="Lat" name="latitude" value={inputs.latitude} onChange={handleChange} />
             <p></p>
-            <input type="number" step="0.0001" placeholder = "Longitude" name="longitude" value={inputs.longitude} onChange={handleChange} />
+            <input type="number" step="0.0001" placeholder = "Long (include ' - ' in front)" name="longitude" value={inputs.longitude} onChange={handleChange} />
             <p></p>
             <div className="align-submit-bttn">
               <button className="button-style">Submit</button>
