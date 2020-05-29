@@ -3,9 +3,7 @@ import ReactMapGL, {Marker,Popup} from 'react-map-gl'
 import CityEntry from './CityEntry'
 import axios from 'axios'
 import Header from './Header.js'
-
 import '../index.css'
-
 
 const Home = () => {
 
