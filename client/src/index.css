@@ -177,6 +177,41 @@ input[type=text], input[type=number], select {
   padding:10px;
 }
 
+.geosuggest {
+  font-size: 9px;
+  border-radius: 4px;
+  background-color: white;
+  color:#202d3f;
+  font-size: 1rem;
+  position: relative;
+  width: 100%;
+  margin: 1em auto;
+  text-align: left;
+}
+
+.geosuggest__suggests {
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 15em;
+  padding: 0;
+  margin-top: -1px;
+  background: #fff;
+  border: 2px solid #267dc0;
+  border-top-width: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  list-style: none;
+  z-index: 5;
+  -webkit-transition: max-height 0.2s, border 0.2s;
+          transition: max-height 0.2s, border 0.2s;
+}
+
+.geosuggest__item:hover,
+.geosuggest__item:focus {
+  background: #f5f5f5;
+}
+
 @media only screen and (max-width:777px) {
 
   .header{

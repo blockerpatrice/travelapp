@@ -4,11 +4,12 @@ const { Schema } = mongoose;
 
 const CitySchema = new Schema({
   name: {
-    type: String,
+    type:String,
     required: true,
   },
   comments: String,
-  image: String,
+  img: 
+      { data: Buffer, contentType: String },
   rating: {
     type: String
   },

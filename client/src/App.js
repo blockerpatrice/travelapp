@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Home from './Components/Home'
 import {Switch,Route} from "react-router-dom"
 import CityEntry from './Components/CityEntry'
-import { Button } from 'react-bootstrap';
+import { GoogleApiWrapper } from 'google-maps-react';
 
 class App extends Component {
 
@@ -15,4 +15,6 @@ class App extends Component {
       )
   }
 }
-export default App;
+
+
+export default GoogleApiWrapper({apiKey:`${process.env.REACT_APP_GOOGLE_API_KEY}`})(App);

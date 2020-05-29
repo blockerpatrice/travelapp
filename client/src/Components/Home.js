@@ -121,12 +121,6 @@ const Home = () => {
        
       </ReactMapGL>
     </div>  
-{/* 
-    <div className="wrapper-form">
-      <CityEntry addCity={addCity} />
-    </div> */}
-
-
     </div>
     
   );

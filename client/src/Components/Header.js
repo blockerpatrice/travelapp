@@ -25,7 +25,10 @@ const Header = (props) => {
 
                 <div className="add-city-button">
                     <Popup
-                        content={<CityEntry addCity={props.addCity}/>}
+                        content={
+                            <CityEntry addCity={props.addCity}/>
+                            
+                        }
                         on='click'
                         pinned ='false'
                         position='bottom left'
