@@ -13,5 +13,4 @@ The travel log is a full stack application that uses the MERN stack, along with 
 * Express.js 
 * MongoDB
 
-# Profile / Resume
-patriceblocker.surge.sh
+
