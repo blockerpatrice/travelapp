@@ -17,9 +17,9 @@ const path = require("path")
 app.use(express.static(path.join(__dirname, "client", "build")))
 
 
-mongoose.connect("mongodb://localhost:27017/travels",{useNewUrlParser: true})
-.then(()=> console.log("Connected to MongoDB"))
-.catch(err => console.error(err));
+// mongoose.connect("mongodb://localhost:27017/travels",{useNewUrlParser: true})
+// .then(()=> console.log("Connected to MongoDB"))
+// .catch(err => console.error(err));
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/travels",
 {
