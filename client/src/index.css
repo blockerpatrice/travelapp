@@ -205,7 +205,12 @@ input[type=text], input[type=number], select {
   z-index: 5;
   -webkit-transition: max-height 0.2s, border 0.2s;
           transition: max-height 0.2s, border 0.2s;
-}
+} 
+.geosuggest__suggests--hidden {
+  max-height: 0;
+  overflow: hidden;
+  border-width: 0;
+} 
 
 .geosuggest__item:hover,
 .geosuggest__item:focus {

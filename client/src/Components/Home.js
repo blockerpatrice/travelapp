@@ -32,7 +32,7 @@ const Home = () => {
   const [showPopup,setShowPopup] = useState({})
 
   const [viewport, setViewport] = useState({
-    width: '100vw',
+    width: '99vw',
     height: '100vh',
     latitude: 43.6150,
     longitude: -116.2023,
@@ -53,7 +53,7 @@ const Home = () => {
       <ReactMapGL
         {...viewport}
         mapStyle="mapbox://styles/blockerbella/ck759dbd108ff1ip577hjsqqm"
-        mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+        mapboxApiAccessToken="pk.eyJ1IjoiYmxvY2tlcmJlbGxhIiwiYSI6ImNrYXJsZTFsZDBkYmkycXAwaWQ5Z3R0aDgifQ.MAl8s5m2wEcsUFC0u9eznw"
         onViewportChange ={setViewport}
         >
       

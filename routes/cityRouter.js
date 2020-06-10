@@ -2,6 +2,7 @@ const express = require('express')
 const cityRouter = express.Router()
 const City =require('../models/CitySchema.js')
 
+
 cityRouter.get("/",(req,res,next) =>{
     City.find((err,cities) => {
         if(err){
@@ -13,7 +14,18 @@ cityRouter.get("/",(req,res,next) =>{
 })
 
 cityRouter.post("/", (req,res,next) =>{
+
+    // const element = req.body.element1;
+
+    // let busboy = new Busboy({headers:req.headers})
+    // busboy.on('finish', () => {
+    //     console.log('Upload finished')
+    //     console.log(req.files)
+    //     const file = req.files.element2
+    //     console.log(file)
+    // })
     const newCity = new City(req.body)
+
     newCity.save((err,savedCity) => {
         if(err){
             res.status(500)

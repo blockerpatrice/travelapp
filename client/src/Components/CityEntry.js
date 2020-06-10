@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Geosuggest from 'react-geosuggest'
 import '../index.css'
+import ImageUploader from 'react-images-upload';
 
 const CityEntry = (props) => {
     const initInputs = {name:String, comments:"", longitude:Number, latitude:Number, image:""}
@@ -10,13 +11,26 @@ const CityEntry = (props) => {
 
 
     const onSuggestSelect = (suggest) => {
+
+      suggest ? 
       setInputs(prevInputs => ({...prevInputs,
         name:suggest.description,
         longitude:Math.trunc(suggest.location.lng),
         latitude:Math.trunc(suggest.location.lat)
-      }))
+      })) : 
    
       console.log(inputs)
+    }
+
+    const divStyle = {
+      padding: "20px"
+    };
+
+    const onDrop = (picture) => {
+      picture? 
+        //setImage([...picture,picture]) 
+        console.log(picture)
+        : setImage([])
     }
     
     const handleChange = (e) =>{
@@ -39,6 +53,17 @@ const CityEntry = (props) => {
                     autoComplete="true"
                     onSuggestSelect={onSuggestSelect}
                 />
+
+          <ImageUploader
+                {...props}
+                withIcon={true}
+                buttonText='Choose images'
+                onChange={onDrop}
+                imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                maxFileSize={5242880}
+                labelStyles={divStyle}
+                singleImage={true}
+            />      
           
             <p></p>
             {/*<p></p>

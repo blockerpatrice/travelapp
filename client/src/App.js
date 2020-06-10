@@ -17,4 +17,4 @@ class App extends Component {
 }
 
 
-export default GoogleApiWrapper({apiKey:`${process.env.REACT_APP_GOOGLE_API_KEY}`})(App);
+export default GoogleApiWrapper({apiKey:"AIzaSyA_KD2KYN4r2TCgsp4O_n1lR7Fv9jQAzVU"})(App);
