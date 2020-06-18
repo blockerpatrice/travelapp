@@ -2,6 +2,8 @@ const express = require('express')
 const mongoose = require('mongoose')
 const morgan = require('morgan')
 const app = express()
+const busboy = require('connect-busboy')
+const busboyBodyParser = require('busboy-body-parser')
 
 require('dotenv').config()
 
@@ -12,6 +14,13 @@ app.use(morgan('dev'))
 app.use("/cities", require("./routes/cityRouter.js"))
 //... other imports 
 const path = require("path")
+
+app.use(busboy())
+// app.use(bodyParser.urlendcoded({extended:true}))
+// app.use(busboyBodyParser.json())
+// app.json()
+
+//require('./routes')(app)
 
 // ... other app.use middleware 
 app.use(express.static(path.join(__dirname, "client", "build")))
@@ -46,3 +55,5 @@ app.get("*", (req, res) => {
 app.listen(port , () => {
     console.log(`Listening`)
 })
+
+app.use(busboyBodyParser())
