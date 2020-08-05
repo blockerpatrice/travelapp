@@ -7,6 +7,8 @@ const busboyBodyParser = require('busboy-body-parser')
 
 require('dotenv').config()
 
+
+
 const port = process.env.PORT || 5002;
 app.use(express.json())
 app.use(morgan('dev'))
@@ -16,13 +18,7 @@ app.use("/cities", require("./routes/cityRouter.js"))
 const path = require("path")
 
 app.use(busboy())
-// app.use(bodyParser.urlendcoded({extended:true}))
-// app.use(busboyBodyParser.json())
-// app.json()
-
-//require('./routes')(app)
-
-// ... other app.use middleware 
+  
 app.use(express.static(path.join(__dirname, "client", "build")))
 
 

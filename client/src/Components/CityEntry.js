@@ -27,10 +27,9 @@ const CityEntry = (props) => {
     };
 
     const onDrop = (picture) => {
-      picture? 
-        //setImage([...picture,picture]) 
-        console.log(picture)
-        : setImage([])
+      picture ? setImage([...picture,picture]) : setImage([])
+
+      console.log(image)
     }
     
     const handleChange = (e) =>{
