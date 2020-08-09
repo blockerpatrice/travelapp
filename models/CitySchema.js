@@ -3,13 +3,14 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const CitySchema = new Schema({
+  _id: mongoose.Schema.Types.ObjectId,
   name: {
     type:String,
     required: true,
   },
   comments: String,
-  img: 
-      { data: Buffer, contentType: String },
+  cityImage: 
+      { type: String },
   rating: {
     type: String
   },

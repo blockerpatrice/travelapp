@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import Geosuggest from 'react-geosuggest'
 import '../index.css'
-import ImageUploader from 'react-images-upload';
+import ImageUploader from 'react-images-upload'
+import axios from 'axios'
+import FileUpload from './FileUpload';
 
 const CityEntry = (props) => {
-    const initInputs = {name:String, comments:"", longitude:Number, latitude:Number, image:""}
+    const initInputs = {name:String, comments:"", longitude:Number, latitude:Number, cityImage:{}}
     
     const [inputs, setInputs] = useState(initInputs)
     const [image, setImage] = useState([]);
@@ -26,21 +28,32 @@ const CityEntry = (props) => {
       padding: "20px"
     };
 
-    const onDrop = (picture) => {
-      picture ? setImage([...picture,picture]) : setImage([])
+    const onDrop = (imageDrop) => {
+      setImage(imageDrop)
 
-      console.log(image)
+      props.addImage(image);
+    
+      // image ? 
+      // setInputs(prevInputs => ({...prevInputs,
+      //   cityImage:image
+      // })) :
+      // console.log(image)
+
     }
     
     const handleChange = (e) =>{
       const {name,value} = e.target
       setInputs(prevInputs => ({...prevInputs, [name]:value}))
+
+      console.log(setInputs)
     }
 
     const handleSubmit = (e) => {
       e.preventDefault()
-      props.addCity(inputs)
       setInputs(initInputs)
+
+      props.addCity(inputs)
+ 
     }
 
 
@@ -52,8 +65,8 @@ const CityEntry = (props) => {
                     autoComplete="true"
                     onSuggestSelect={onSuggestSelect}
                 />
-
-          <ImageUploader
+          <FileUpload/>
+          {/* <ImageUploader
                 {...props}
                 withIcon={true}
                 buttonText='Choose images'
@@ -62,7 +75,7 @@ const CityEntry = (props) => {
                 maxFileSize={5242880}
                 labelStyles={divStyle}
                 singleImage={true}
-            />      
+            />       */}
           
             <p></p>
             {/*<p></p>

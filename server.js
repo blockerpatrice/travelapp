@@ -2,22 +2,26 @@ const express = require('express')
 const mongoose = require('mongoose')
 const morgan = require('morgan')
 const app = express()
-const busboy = require('connect-busboy')
-const busboyBodyParser = require('busboy-body-parser')
+const bodyParser = require('body-parser')
+const cors = require('cors')
 
 require('dotenv').config()
 
-
-
 const port = process.env.PORT || 5002;
 app.use(express.json())
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
+
 app.use(morgan('dev'))
+app.use(cors())
 
 app.use("/cities", require("./routes/cityRouter.js"))
 //... other imports 
 const path = require("path")
 
-app.use(busboy())
+app.use('/uploads', express.static('uploads'))
   
 app.use(express.static(path.join(__dirname, "client", "build")))
 
@@ -52,4 +56,4 @@ app.listen(port , () => {
     console.log(`Listening`)
 })
 
-app.use(busboyBodyParser())
+

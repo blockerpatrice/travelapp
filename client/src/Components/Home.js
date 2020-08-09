@@ -22,6 +22,15 @@ const Home = () => {
     .catch(err => console.log(err))
   }
 
+  const addImage = (newImage) => {
+    const formData = new FormData()
+      formData.append('cityImage', newImage)
+      axios.post("http://localhost:5002/cities/", formData, {
+      }).then(res => {
+          console.log(res)
+      })
+  }
+
   const deleteCity = (cityId) =>{
     axios.delete(`/cities/${cityId}`)
     .then(res => {setCities(prevCities => prevCities.filter(city => city._id !== cityId))})
@@ -32,8 +41,8 @@ const Home = () => {
   const [showPopup,setShowPopup] = useState({})
 
   const [viewport, setViewport] = useState({
-    width: '99vw',
-    height: '100vh',
+    width: "99vw",
+    height: "100vh",
     latitude: 43.6150,
     longitude: -116.2023,
     zoom: 3
@@ -46,7 +55,7 @@ const Home = () => {
 
    return (
     <div className="parent-wrapper">
-      <Header addCity={addCity}/>
+      <Header addCity={addCity} addImage={addImage}/>
     
 
     <div className="map-styles">
@@ -104,7 +113,7 @@ const Home = () => {
                     <h3 className="popup-text">{entry.name}</h3>
                     <p className="popup-text">{entry.comments}</p>
                     
-                    {entry.image && <img src={entry.image} alt={entry.title} className="img"/>}
+                    {entry.cityImage && <img src={`http://localhost:5002/` + entry.cityImage} alt={entry.title} className="img"/>}
                   </div>
                 </Popup>
               ) : null
