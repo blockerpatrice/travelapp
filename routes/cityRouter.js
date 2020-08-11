@@ -53,6 +53,7 @@ cityRouter.post("/files", upload.single('cityImage') ,(req,res,next) =>{
         latitude:req.body.latitude,
         longitude:req.body.longitude,
         cityImage:url + '/uploads/' + req.file.filename,
+        comments:req.body.comments
         
     });
     newCity 
@@ -67,22 +68,15 @@ cityRouter.post("/files", upload.single('cityImage') ,(req,res,next) =>{
                     latitude: result.latitude,
                     longitude:result.longitude,
                     cityImage:result.cityImage,
+                    comments:req.body.comments
                     
                 }
             })
         })
-    // const newCity = new City(req.body)
 
-    // newCity.save((err,savedCity) => {
-    //     if(err){
-    //         res.status(500)
-    //         return next(err)
-    //     }
-    //     return res.status(201).send(savedCity)
-    // } )
 })
 
-cityRouter.delete("/:cityId", (req,res,next)=> {
+cityRouter.delete("/files/:cityId", (req,res,next)=> {
     City.findOneAndDelete({_id: req.params.cityId}, (err, deletedItem) => {
         if(err){
             res.status(500)

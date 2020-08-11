@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import ReactMapGL, {Marker,Popup} from 'react-map-gl'
-import CityEntry from './CityEntry'
 import axios from 'axios'
 import Header from './Header.js'
 import '../index.css'
@@ -31,7 +30,7 @@ const Home = () => {
   }
 
   const deleteCity = (cityId) =>{
-    axios.delete(`/uploads/${cityId}`)
+    axios.delete(`/api/files/${cityId}`)
     .then(res => {setCities(prevCities => prevCities.filter(city => city._id !== cityId))})
     .catch(err => console.log(err))
   }
@@ -111,7 +110,9 @@ const Home = () => {
                     <h3 className="popup-text">{entry.name}</h3>
                     <p className="popup-text">{entry.comments}</p>
                     
+                    
                     {entry.cityImage && <img src={entry.cityImage} alt={entry.title} className="img"/>}
+                    <button onClick={() => deleteCity(entry._id)} className="delete-btn">Delete</button>
                   </div>
                 </Popup>
               ) : null

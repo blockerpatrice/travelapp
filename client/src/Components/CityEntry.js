@@ -3,7 +3,7 @@ import Geosuggest from 'react-geosuggest'
 import '../index.css'
 
 const CityEntry = (props) => {
-    const initInputs = {name:String, longitude:Number, latitude:Number}
+    const initInputs = {name:String, longitude:Number, latitude:Number, comments:String}
     
     const [inputs, setInputs] = useState(initInputs)
     const [image, setImage] = useState("");
@@ -12,8 +12,8 @@ const CityEntry = (props) => {
       suggest ? 
       setInputs(prevInputs => ({...prevInputs,
         name:suggest.description,
-        longitude:Math.trunc(suggest.location.lng),
-        latitude:Math.trunc(suggest.location.lat)
+        longitude:suggest.location.lng,
+        latitude:suggest.location.lat
       })) : 
    
       console.log(inputs)
@@ -43,6 +43,7 @@ const CityEntry = (props) => {
       formData.append('name', inputs.name)
       formData.append('longitude', inputs.longitude)
       formData.append('latitude',inputs.latitude)
+      formData.append('comments',inputs.comments)
       formData.append('cityImage',image)
     
       
@@ -58,8 +59,14 @@ const CityEntry = (props) => {
               autoComplete="true"
               onSuggestSelect={onSuggestSelect}
             />
-
-            <input type="file" onChange={onDrop}/> 
+            <div className="comments">
+              <input type="text" autoComplete="off" placeholder="Comments" name="comments" onChange={handleChange} />
+            </div>
+            
+            <div className="img-upload">
+              <input type="file" onChange={onDrop} className="img-input"/> 
+            </div>
+  
           
             <p></p>
 

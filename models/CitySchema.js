@@ -10,6 +10,9 @@ const CitySchema = new Schema({
   cityImage: { 
     type: String 
   },
+  comments:{
+    type:String
+  },
   latitude: {
     type:Number
   },
