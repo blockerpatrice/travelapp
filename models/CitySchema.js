@@ -5,14 +5,10 @@ const { Schema } = mongoose;
 const CitySchema = new Schema({
   _id: mongoose.Schema.Types.ObjectId,
   name: {
-    type:String,
-    required: true,
+    type:String
   },
-  comments: String,
-  cityImage: 
-      { type: String },
-  rating: {
-    type: String
+  cityImage: { 
+    type: String 
   },
   latitude: {
     type:Number
