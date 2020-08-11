@@ -10,33 +10,31 @@ const Home = () => {
   const [cities, setCities] = useState([]);
 
   const getCities = () => {
-      axios.get('/cities')
+      axios.get('/api')
         .then(res => setCities(res.data))
         .catch(err => console.log(err))
        console.log("cities fetched successfully")
 
   }
-  const addCity = (newCity) =>{
-    axios.post('/cities', newCity)
-    .then(res => {setCities(prevCities => [...prevCities, res.data])})
-    .catch(err => console.log(err))
-  }
+  const addCity = (newCity) => {
+    console.log(newCity)
 
-  const addImage = (newImage) => {
-    const formData = new FormData()
-      formData.append('cityImage', newImage)
-      axios.post("http://localhost:5002/cities/", formData, {
-      }).then(res => {
-          console.log(res)
-      })
+    const config = {     
+      headers: { 'content-type': 'multipart/form-data' }
+    }
+
+    axios.post('/api/files', newCity, config)
+    .then(res => {setCities(prevCities => [...prevCities, res.data.createdCity])})
+    .catch(err => console.log(err))
+
+    console.log(cities)
   }
 
   const deleteCity = (cityId) =>{
-    axios.delete(`/cities/${cityId}`)
+    axios.delete(`/uploads/${cityId}`)
     .then(res => {setCities(prevCities => prevCities.filter(city => city._id !== cityId))})
     .catch(err => console.log(err))
   }
-
 
   const [showPopup,setShowPopup] = useState({})
 
@@ -55,7 +53,7 @@ const Home = () => {
 
    return (
     <div className="parent-wrapper">
-      <Header addCity={addCity} addImage={addImage}/>
+       <Header addCity={addCity} /> 
     
 
     <div className="map-styles">
@@ -113,7 +111,7 @@ const Home = () => {
                     <h3 className="popup-text">{entry.name}</h3>
                     <p className="popup-text">{entry.comments}</p>
                     
-                    {entry.cityImage && <img src={`http://localhost:5002/` + entry.cityImage} alt={entry.title} className="img"/>}
+                    {entry.cityImage && <img src={entry.cityImage} alt={entry.title} className="img"/>}
                   </div>
                 </Popup>
               ) : null

@@ -27,7 +27,6 @@ const Header = (props) => {
                     <Popup
                         content={
                             <CityEntry addCity={props.addCity} addImage={props.addImage}/>
-                            
                         }
                         on='click'
                         pinned ='false'

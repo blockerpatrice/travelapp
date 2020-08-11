@@ -1,24 +1,37 @@
 const express = require('express')
-const cityRouter = express.Router()
 const multer = require('multer')
 const mongoose = require('mongoose')
+const uuidv4 = require('uuid/v4')
+const path = require('path')
 
+const DIR = './uploads/'
 const storage = multer.diskStorage({
     //diskStorage is used to define destination and filename
     destination: (req, file, cb) => {
-        cb(null, './uploads');
+        cb(null, DIR);
     },
     filename: (req, file, cb) => {
         const fileName = file.originalname.toLocaleLowerCase().split(' ').join('.')
-        cb(null, new Date().toISOString() + file.originalname)
+        cb(null, uuidv4() + '-' + fileName)
     }
 })
 
-const upload = multer({storage:storage})
+const cityRouter = express.Router()
 
-const City =require('../models/CitySchema.js')
+var upload = multer({
+    storage:storage,
+    fileFilter: (req, file, cb) => {
+        if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg") {
+            cb(null, true);
+        } else {
+            cb(null, false);
+            return cb(new Error('Only .png, .jpg and .jpeg format allowed!'));
+        }
+    }
 
+})
 
+const City = require('../models/CitySchema.js')
 
 cityRouter.get("/",(req,res,next) =>{
     City.find((err,cities) => {
@@ -30,15 +43,17 @@ cityRouter.get("/",(req,res,next) =>{
     })
 })
 
-cityRouter.post("/",upload.single('cityImage') ,(req,res,next) =>{
-    console.log(req.file);
+cityRouter.post("/files", upload.single('cityImage') ,(req,res,next) =>{
+    console.log(res);
+    
     const url = req.protocol + '://' + req.get('host')
     const newCity = new City({
         _id: new mongoose.Types.ObjectId(),
         name: req.body.name,
-        cityImage:url + '/uploads/' + req.file.filename,
         latitude:req.body.latitude,
-        longitude:req.body.longitude
+        longitude:req.body.longitude,
+        cityImage:url + '/uploads/' + req.file.filename,
+        
     });
     newCity 
         .save()
@@ -48,14 +63,15 @@ cityRouter.post("/",upload.single('cityImage') ,(req,res,next) =>{
                 message: "Created city",
                 createdCity :{
                     name: result.name,
-                    cityImage:result.cityImage,
                     _id: result._id,
                     latitude: result.latitude,
-                    longitude:result.longitude
+                    longitude:result.longitude,
+                    cityImage:result.cityImage,
+                    
                 }
             })
         })
-    //const newCity = new City(req.body)
+    // const newCity = new City(req.body)
 
     // newCity.save((err,savedCity) => {
     //     if(err){
@@ -75,7 +91,6 @@ cityRouter.delete("/:cityId", (req,res,next)=> {
         return res.status(200).send(`Successfully deleted item ${deletedItem.name}`)
     })
 })
-
 
 //cityRouter.get()
 
