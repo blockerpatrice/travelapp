@@ -4,6 +4,9 @@ import '../index.css'
 const AboutProject = () => {
     return(
         <div className="about-project">
+            <p>Only .png, .jpg and .jpeg format allowed. Please use smaller files (under 2MB) so it does not
+                take forever to upload*
+            </p>
             <p>
                 Patty's travel log is a full stack application that uses the Mongodb, Express.js, React.js and Node.js (MERN) stack, 
                 along with react-map-gl. File upload is done with the help of the multer middleware. React-map-gl is a React wrapper component for the Mapbox API, and is 
