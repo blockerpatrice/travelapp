@@ -4,6 +4,10 @@ import {Switch,Route} from "react-router-dom"
 import CityEntry from './Components/CityEntry'
 import { GoogleApiWrapper } from 'google-maps-react';
 
+require('dotenv').config()
+
+let key = process.env.REACT_APP_GOOGLE_API_KEY
+
 class App extends Component {
 
   render() {
@@ -14,4 +18,4 @@ class App extends Component {
 }
 
 
-export default GoogleApiWrapper({apiKey:"AIzaSyA_KD2KYN4r2TCgsp4O_n1lR7Fv9jQAzVU"})(App);
+export default GoogleApiWrapper({apiKey:key})(App);

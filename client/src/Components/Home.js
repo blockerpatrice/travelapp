@@ -4,6 +4,10 @@ import axios from 'axios'
 import Header from './Header.js'
 import '../index.css'
 
+require('dotenv').config()
+
+let key = process.env.REACT_APP_MAPBOX_TOKEN;
+
 const Home = () => {
 
   const [cities, setCities] = useState([]);
@@ -54,12 +58,11 @@ const Home = () => {
     <div className="parent-wrapper">
        <Header addCity={addCity} /> 
     
-
     <div className="map-styles">
       <ReactMapGL
         {...viewport}
         mapStyle="mapbox://styles/blockerbella/ck759dbd108ff1ip577hjsqqm"
-        mapboxApiAccessToken="pk.eyJ1IjoiYmxvY2tlcmJlbGxhIiwiYSI6ImNrYXJsZTFsZDBkYmkycXAwaWQ5Z3R0aDgifQ.MAl8s5m2wEcsUFC0u9eznw"
+        mapboxApiAccessToken= {key}
         onViewportChange ={setViewport}
         >
       
